@@ -1,12 +1,12 @@
 "use strict";
+
 // Varijable inicijalizacija
 const searchVal = document.getElementById("searchInput");
 const displayRes = document.getElementById("results");
-const loader = document.getElementById("loader");
 const searchErr = document.getElementById("searchErr");
 
 // Kod koji radi mali delay kako nebi pretraživalo svako slovo koje korisnik utipka neko "pričeka"
-searchVal.addEventListener("input", searchLibrary);
+searchVal.addEventListener("input", debounce(searchLibrary, 300));
 
 async function searchLibrary() {
   const urlsrc = searchVal.value.trim();
@@ -24,6 +24,7 @@ async function searchLibrary() {
       displayRes.innerHTML = "";
     } else {
       displayResults(data.results);
+      return;
     }
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -47,4 +48,12 @@ function displayResults(results) {
 function clearRes() {
   displayRes.innerHTML = "";
   searchErr.style.display = "none";
+}
+
+function debounce(func, delay) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), delay);
+  };
 }
