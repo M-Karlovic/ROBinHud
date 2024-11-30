@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MK SongSearch App</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Linkovi za fontove  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Znamenny+Musical+Notation&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header><h1>Music library 🎧</h1></header>
+    <main>
+      <!-- Input polje -->
+      <form id="SearchForma">
+        <input type="text" name="musicSearch" id="searchInput" placeholder="Song / Artist" />
+      </form>
+      <!-- Display rezultata -->
+      <div id="results"></div>
+      <div id="searchErr">We can't find what you are looking for.</div>
+    </main>
+  </body>
+</html>
